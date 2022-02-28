@@ -5,10 +5,10 @@
 '' Author: Brett Schwarz
 '' Copyright (c) 2019 by Brett Schwarz
 
-!$THEME = "cerulean"
+!$THEME = "coyote-green"
 
 !if %not(%variable_exists("$BGCOLOR"))
-!$BGCOLOR = "transparent"
+!$BGCOLOR = "green"
 !endif
 
 skinparam backgroundColor $BGCOLOR
