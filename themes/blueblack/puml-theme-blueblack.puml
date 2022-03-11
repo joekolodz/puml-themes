@@ -332,9 +332,9 @@ skinparam database {
 skinparam class {
 	$primary_scheme()
 	HeaderBackgroundColor $PRIMARY_LIGHT-$PRIMARY
-	StereotypeFontColor $DARK
+	StereotypeFontColor $PRIMARY_TEXT
 	BorderThickness 1
-	AttributeFontColor $LIGHT
+	AttributeFontColor $PRIMARY_TEXT
 	AttributeFontSize 11
 }
 
@@ -344,9 +344,9 @@ skinparam class {
 
 skinparam object {
 	$primary_scheme()
-	StereotypeFontColor $DARK
+	StereotypeFontColor $PRIMARY_TEXT
 	BorderThickness 1
-	AttributeFontColor $LIGHT
+	AttributeFontColor $PRIMARY_TEXT
 	AttributeFontSize 11
 }
 !endsub
@@ -356,7 +356,7 @@ skinparam object {
 skinparam usecase {
 	$primary_scheme()
 	BorderThickness 2
-	StereotypeFontColor $PRIMARY
+	StereotypeFontColor $PRIMARY_TEXT
 }
 !endsub
 
@@ -365,7 +365,7 @@ skinparam usecase {
 skinparam rectangle {
 	$secondary_scheme()
 	BorderThickness 2
-	StereotypeFontColor $PRIMARY
+	StereotypeFontColor $PRIMARY_TEXT
 }
 !endsub
 
@@ -406,7 +406,7 @@ skinparam state {
 	BorderColor $PRIMARY_DARK
 	StartColor $INFO
 	EndColor $INFO
-	AttributeFontColor $LIGHT
+	AttributeFontColor $PRIMARY_TEXT
 	AttributeFontSize 11
 }
 !endsub
