@@ -1,148 +1,149 @@
 ''
-'' Cerulean theme based off of the bootstrap theme of the same name
-'' https://bootswatch.com/cerulean/
+'' A theme based on the Coyote Logistics color scheme
 ''
-'' Author: Brett Schwarz
-'' Copyright (c) 2019 by Brett Schwarz
-
-!$THEME = "coyote-green"
+'' Author: Joe Kolodz
+'' Copyright (c) 2022 by Joe kOlodz
+!$THEME = "coyotelogistics"
 
 !if %not(%variable_exists("$BGCOLOR"))
-!$BGCOLOR = "green"
+!$BGCOLOR = "transparent"
 !endif
 
-skinparam backgroundColor $BGCOLOR
-skinparam useBetaStyle false
+'color definitions - do not use these directly
+!$WHITE = "#fff"
+!$OFF_WHITE = "#f7f3f7"
 
-''
-'' Colors taken from the css file of the BS theme
-''
-!$BLUE = "#033C73"
-!$INDIGO = "#6610F2"
-!$PURPLE = "#6F42C1"
-!$PINK = "#E83E8C"
-!$RED = "#C71C22"
-!$ORANGE = "#FD7E14"
-!$YELLOW = "#DD5600"
-!$GREEN = "#73A839"
-!$TEAL = "#20C997"
-!$CYAN = "#2FA4E7"
-!$WHITE = "#FFF"
-!$GRAY_DARK = "#343A40"
-!$GRAY = "#868E96"
-!$PRIMARY = "#2FA4E7"
-!$SECONDARY = "#E9ECEF"
-!$SUCCESS = "#73A839"
-!$INFO = "#033C73"
-!$WARNING = "#DD5600"
-!$DANGER = "#C71C22"
-!$LIGHT = "#F8F9FA"
-!$DARK = "#343A40"
-'forcechange
-'' *_LIGHT = tint (lighter) of the main color of 80%
-''          where TINT is calculated by clr + (255-clr) * tint_factor
-'' *_DARK = shade (darker) of the main color of 80%
-''          and SHADE is calculated by clr * (1 - shade_factor)
-''
-!$FGCOLOR = $DARK
-!$PRIMARY_LIGHT = "#59B6EC"
-!$PRIMARY_DARK = "#2683B9"
-!$PRIMARY_TEXT = $WHITE
-!$SECONDARY_LIGHT = "#EDF0F2"
-!$SECONDARY_DARK = "#BABDBF"
-!$SECONDARY_TEXT = $DARK
-!$INFO_LIGHT = "#35638F"
-!$INFO_DARK = "#02305C"
-!$INFO_TEXT = $WHITE
-!$SUCCESS_LIGHT = "#8FB961"
-!$SUCCESS_DARK = "#5C862E"
-!$SUCCESS_TEXT = $WHITE
-!$WARNING_LIGHT = "#E47833"
-!$WARNING_DARK = "#B14500"
-!$WARNING_TEXT = $WHITE
-!$DANGER_LIGHT = "#D2494E"
-!$DANGER_DARK = "#9F161B"
-!$DANGER_TEXT = $WHITE
+!$GREEN = "#3bea1f"
+!$LIGHT_GREEN = "#69f438"
+!$MEDIUM_GREEN = "#33cc32"
+!$DARK_GREEN = "#090"
+
+!$LIGHT_BLUE = "#5fffd7"
+!$MEDIUM_BLUE = "#00bfa8"
+!$DARK_BLUE = "#008083"
+
+!$YELLOW = "#ffff00"
+!$GOLD = "#cb9901"
+
+!$RED = "#f00"
+!$LIGHT_RED = "#c33"
+!$DARK_RED = "#980101"
+
+!$LIGHT_GRAY = "#404040"
+!$MEDIUM_GRAY = "#333"
+!$DARK_GRAY = "#313131"
+!$BLACK = "#000"
+
+
+
+
+
+
+
+
+
+'definitions for color usages, do not use # values here for colors. define them above first
+!$BACKGROUND = $BLACK
+!$TEXT_HEADER = $BLACK
+!$TEXT = $OFF_WHITE
+!$ERROR = $LIGHT_RED
+!$HEADER_BACKGROUND = $DARK_GREEN
+!$OBJECT_BACKGROUND = $DARK_GRAY
+!$OBJECT_BORDER = $MEDIUM_GREEN
 
 !procedure $success($msg)
-  <font color=$SUCCESS><b>$msg
+  <font color=$GREEN><b>$msg
 !endprocedure
 
 !procedure $failure($msg)
-  <font color=$DANGER><b>$msg
+  <font color=$RED><b>$msg
 !endprocedure
 
 !procedure $warning($msg)
-  <font color=$WARNING><b>$msg
+  <font color=$GOLD><b>$msg
 !endprocedure
 
 !procedure $primary_scheme()
-	FontColor $PRIMARY_TEXT
-	BorderColor $PRIMARY
-	BackgroundColor $PRIMARY_LIGHT-$PRIMARY
+	FontColor $TEXT_HEADER
+	BorderColor $OBJECT_BORDER
+	BackgroundColor $OBJECT_BACKGROUND
 !endprocedure
 
-''
-'' Global Default Values
-''
-skinparam defaultFontName        "Verdana"
-skinparam defaultFontSize        12
-skinparam dpi                    100
-skinparam shadowing              false
-skinparam roundcorner            8
-skinparam ParticipantPadding     40
-skinparam BoxPadding             40
-skinparam Padding                5
-skinparam ArrowColor             $GRAY
+!procedure $secondary_scheme()
+	FontColor $TEXT_HEADER
+	BorderColor $OBJECT_BORDER
+	BackgroundColor $WHITE-#fefefe
+!endprocedure
+
+skinparam BackgroundColor       $BACKGROUND
+skinparam useBetaStyle          false
+skinparam defaultFontName       "Arial"
+skinparam defaultFontSize       14
+skinparam dpi                   100
+skinparam shadowing             false
+skinparam roundcorner           6
+skinparam ParticipantPadding    30
+skinparam BoxPadding            40
+skinparam Padding               1
+skinparam PackageBackgroundColor $RED
+
 skinparam stereotype {
-    CBackgroundColor $SECONDARY_LIGHT
-    CBorderColor $SECONDARY_DARK
-    ABackgroundColor $SUCCESS_LIGHT
-    ABorderColor $SUCCESS_DARK
-    IBackgroundColor $DANGER_LIGHT
-    IBorderColor $DANGER_DARK
-    EBackgroundColor $WARNING_LIGHT
-    EBorderColor $WARNING_DARK
-    NBackgroundColor $INFO_LIGHT
-    NBorderColor $INFO_DARK
-}
-skinparam title {
-	FontColor	                 $PRIMARY
-	BorderColor	                 $SECONDARY_DARK
-	FontSize	    	         20
-	BorderRoundCorner            8
-	BorderThickness 	         1
-	BackgroundColor              $SECONDARY_LIGHT-$SECONDARY
+    'Class and Entity
+    CBackgroundColor $GREEN
+    CBorderColor $MEDIUM_GRAY
+    
+    'Abstract and Abstract Class
+    ABackgroundColor $LIGHT_BLUE
+    ABorderColor $MEDIUM_GRAY
+    
+    'Interface
+    IBackgroundColor $GOLD
+    IBorderColor $MEDIUM_GRAY
+    
+    'Enum
+    EBackgroundColor $YELLOW
+    EBorderColor $MEDIUM_GRAY
+    
+    'Annotation
+    NBackgroundColor $OFF_WHITE
+    NBorderColor $MEDIUM_GRAY
 }
 
+skinparam title {
+	BorderColor $BGCOLOR
+	BackgroundColor $BACKGROUND
+    FontColor $OFF_WHITE
+}
 
 skinparam legend {
-	BackgroundColor $SECONDARY
-	BorderColor $SECONDARY_DARK
-	FontColor $DARK
+	BackgroundColor $OBJECT_BACKGROUND
+	BorderColor $OBJECT_BORDER
+	FontColor $TEXT
 }
 
 !startsub swimlane
 skinparam swimlane {
-	BorderColor $INFO
+	BorderColor $OBJECT_BORDER
 	BorderThickness 2
-	TitleBackgroundColor  $SECONDARY_LIGHT-$SECONDARY
-	TitleFontColor $PRIMARY
+	TitleBackgroundColor  $HEADER_BACKGROUND
+	TitleFontColor $TEXT_HEADER
 }
 !endsub
 
 !startsub activity
 
 skinparam activity {
-	$primary_scheme()
-	BarColor $SUCCESS
-	StartColor $INFO
-	EndColor $INFO
-	''
-	DiamondBackgroundColor $WHITE-$SECONDARY_LIGHT
-  	DiamondBorderColor $SECONDARY_DARK
-	DiamondFontColor $SECONDARY_TEXT
+	FontColor $TEXT
+	BorderColor $OBJECT_BORDER
+	BackgroundColor $OBJECT_BACKGROUND
+	BarColor $GREEN
+	StartColor $YELLOW
+	EndColor $RED
+	DiamondBackgroundColor $HEADER_BACKGROUND
+  	DiamondBorderColor $OBJECT_BORDER
+	DiamondFontColor $TEXT
 }
+
 !endsub
 
 !startsub participant
@@ -157,59 +158,65 @@ skinparam participant {
 
 skinparam actor {
 	$primary_scheme()
-	FontColor $DARK
+	FontColor $PRIMARY
 }
 !endsub
 
 !startsub arrow
 
 skinparam arrow {
-	Thickness 3
-	Color $PRIMARY
-	FontColor $FGCOLOR
+	Thickness 2
+	Color $DARK_BLUE
+	FontColor $TEXT
 }
+
 !endsub
 
 !startsub sequence
 
-skinparam sequence {
-	BorderColor $PRIMARY
+skinparam sequence {    
+	BorderColor $OBJECT_BORDER
 	' For some reason sequence title font color does not pick up from global
-	TitleFontColor $PRIMARY
-	BackgroundColor $BGCOLOR
-	StartColor $PRIMARY
-	EndColor $PRIMARY
+	TitleFontColor $TEXT_HEADER
+	BackgroundColor $OBJECT_BACKGROUND
+    HeaderBackgroundColor $OBJECT_BACKGROUND
+	StartColor $YELLOW
+	EndColor $RED
 	''
 	BoxBackgroundColor $BGCOLOR
-	BoxBorderColor $GRAY
-	BoxFontColor $DARK
+	BoxBorderColor $OBJECT_BORDER
+	BoxFontColor $TEXT
 	''
-	DelayFontColor $DARK
+	DelayFontColor $TEXT
 	''
-	LifeLineBorderColor $SECONDARY_DARK
+	LifeLineBorderColor $DARK_GREEN
 	LifeLineBorderThickness 2
-	LifeLineBackgroundColor $SECONDARY_LIGHT
+	LifeLineBackgroundColor $YELLOW
 	''
-	GroupBorderColor $GRAY
-	GroupFontColor $DARK
-	GroupHeaderFontColor $INFO
-	GroupBackgroundColor $SECONDARY
-	GroupBodyBackgroundColor $BGCOLOR
-	GroupHeaderBackgroundColor $BGCOLOR
+	GroupBorderColor $DARK_BLUE
+	GroupFontColor $TEXT
+	GroupHeaderFontColor $TEXT_HEADER
+	GroupBackgroundColor $MEDIUM_BLUE
+	GroupBodyBackgroundColor $OBJECT_BACKGROUND
+	GroupHeaderBackgroundColor $BACKGROUND
 	''
-	DividerBackgroundColor $WHITE-$LIGHT
-    DividerBorderColor $GRAY
+	DividerBackgroundColor $OBJECT_BACKGROUND
+    DividerBorderColor $OBJECT_BORDER
     DividerBorderThickness 2
-    DividerFontColor $DARK
+    DividerFontColor $GOLD
 	''
-	ReferenceBackgroundColor $BGCOLOR
-	ReferenceBorderColor $GRAY
-	ReferenceFontColor $DARK
-	ReferenceHeaderFontColor $INFO
+	ReferenceBackgroundColor $OBJECT_BACKGROUND
+	ReferenceBorderColor $OBJECT_BORDER
+	ReferenceFontColor $DARK_BLUEGRAY
+	ReferenceHeaderFontColor $TEXT_HEADER
 	''
-	StereotypeFontColor $PRIMARY_TEXT
+	StereotypeFontColor $TEXT
+
+	AttributeFontColor $TEXT
+	AttributeFontSize 50
 }
 !endsub
+
 
 !startsub partition
 
@@ -231,7 +238,7 @@ skinparam collections {
 
 skinparam control {
 	$primary_scheme()
-	FontColor $DARK
+	FontColor $PRIMARY
 }
 !endsub
 
@@ -239,7 +246,7 @@ skinparam control {
 
 skinparam entity {
 	$primary_scheme()
-	FontColor $DARK
+	FontColor $PRIMARY
 }
 !endsub
 
@@ -247,7 +254,7 @@ skinparam entity {
 
 skinparam boundary {
 	$primary_scheme()
-	FontColor $DARK
+	FontColor $PRIMARY
 }
 !endsub
 
@@ -264,18 +271,19 @@ skinparam agent {
 
 skinparam note {
 	BorderThickness 1
-	BackgroundColor $INFO_LIGHT-$INFO
-	BorderColor $INFO
-	FontColor $WHITE
+    BackgroundColor $GOLD
+	BorderColor $OBJECT_BORDER
+	FontColor $TEXT_HEADER
 }
+
 !endsub
 
 !startsub artifact
 
 skinparam artifact {
-	BackgroundColor $WHITE-$LIGHT
-	BorderColor $SECONDARY_DARK
-	FontColor $SECONDARY_TEXT
+	BackgroundColor $PRIMARY-$PRIMARY_LIGHT
+	BorderColor $BORDER
+	FontColor $PRIMARY_TEXT
 }
 !endsub
 
@@ -308,8 +316,8 @@ skinparam storage {
 
 skinparam node {
 	BackgroundColor $SECONDARY_LIGHT-$SECONDARY
-	BorderColor $SECONDARY
-	FontColor $SECONDARY_TEXT
+	BorderColor $SECONDARY_DARK
+	FontColor $PRIMARY
 }
 !endsub
 
@@ -326,29 +334,34 @@ skinparam cloud {
 
 skinparam database {
 	$primary_scheme()
-	FontColor $DARK
+	' FontColor $PRIMARY
+	BorderColor $PRIMARY_DARK
+	' BackgroundColor  $BGCOLOR
 }
 !endsub
 
 !startsub class
 
-skinparam class {
-	$primary_scheme()
-	HeaderBackgroundColor $PRIMARY-$PRIMARY_DARK
-	StereotypeFontColor $DARK
-	BorderThickness 1
-	AttributeFontColor $LIGHT
-	AttributeFontSize 11
+skinparam class{
+    $primary_scheme()
+
+    HeaderBackgroundColor $HEADER_BACKGROUND
+	StereotypeFontColor $PRIMARY_TEXT
+    FontSize 14
+    BorderThickness 1
+    AttributeFontColor $TEXT
+    AttributeFontSize 14
 }
+
 !endsub
 
 !startsub object
 
 skinparam object {
 	$primary_scheme()
-	StereotypeFontColor $DARK
+	StereotypeFontColor $PRIMARY_TEXT
 	BorderThickness 1
-	AttributeFontColor $SECONDARY_TEXT
+	AttributeFontColor $PRIMARY_TEXT
 	AttributeFontSize 11
 }
 !endsub
@@ -358,29 +371,30 @@ skinparam object {
 skinparam usecase {
 	$primary_scheme()
 	BorderThickness 2
-	StereotypeFontColor $PRIMARY
+	StereotypeFontColor $PRIMARY_TEXT
 }
 !endsub
 
 !startsub rectangle
 
 skinparam rectangle {
-	FontColor $PRIMARY
-	BorderColor $PRIMARY_LIGHT
-	BackgroundColor $BGCOLOR
+	$secondary_scheme()
 	BorderThickness 2
-	StereotypeFontColor $PRIMARY
+	StereotypeFontColor $PRIMARY_TEXT
 }
 !endsub
 
 !startsub package
 
 skinparam package {
-	FontColor $PRIMARY
-	BorderColor $PRIMARY_LIGHT
-	BackgroundColor $BGCOLOR
-	BorderThickness 2
+	FontColor $TEXT_HEADER
+	BorderColor $OBJECT_BORDER
+	BackgroundColor $OBJECT_BACKGROUND
+    StereotypeFontColor $TEXT
+    
+	BorderThickness 3
 }
+
 !endsub
 
 !startsub folder
@@ -410,7 +424,7 @@ skinparam state {
 	BorderColor $PRIMARY_DARK
 	StartColor $INFO
 	EndColor $INFO
-	AttributeFontColor $SECONDARY_TEXT
+	AttributeFontColor $PRIMARY_TEXT
 	AttributeFontSize 11
 }
 !endsub
@@ -436,7 +450,7 @@ skinparam card {
 skinparam file {
 	BackgroundColor $SECONDARY_LIGHT-$SECONDARY
 	BorderColor $INFO
-	FontColor $GRAY
+	FontColor $SECONDARY_TEXT
 
 }
 !endsub
@@ -447,3 +461,67 @@ skinparam stack {
 	$primary_scheme()
 }
 !endsub
+
+
+
+
+
+'end of theme
+
+
+
+title 
+
+Coyote Logistics Theme Sample
+Activity Diagram
+
+end title
+
+
+
+
+
+participant Participant as Foo
+actor       Actor       as Foo1
+boundary    Boundary    as Foo2
+control     Control     as Foo3
+entity      Entity      as Foo4
+database    Database    as Foo5
+collections Collections as Foo6
+queue       Queue       as Foo7
+Foo -> Foo1 : To actor 
+activate Foo1
+Foo -> Foo2 : To boundary
+deactivate Foo1
+Foo -> Foo3 : To control
+Foo -> Foo4 : To entity
+Foo -> Foo5 : To database
+activate Foo5
+Foo -> Foo6 : To collections
+Foo -> Foo7: To queue
+deactivate Foo5
+participant "Famous Bob" as Bob << Generated >>
+participant Alice << (C,$GOLD) Testable >>
+
+Alice -> Bob: Authentication Request
+
+alt successful case
+
+    Bob -> Alice: Authentication Accepted
+rnote left: this is a first note
+else some kind of failure
+
+    Bob -> Alice: Authentication Failure
+    group My own label
+    Alice -> Log : Log attack start
+        loop 1000 times
+            Alice -> Bob: DNS Attack
+        end
+    Alice -> Log : Log attack end
+    end
+
+else Another type of failure
+
+   Bob -> Alice: Please repeat
+
+end
