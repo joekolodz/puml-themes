@@ -9,18 +9,13 @@
 !$BGCOLOR = "transparent"
 !endif
 
+
 'color definitions - do not use these directly
+!$BLACK = "#000"
+!$ALMOST_BLACK = "#101010"
+
 !$WHITE = "#fff"
 !$OFF_WHITE = "#f7f3f7"
-
-!$GREEN = "#3bea1f"
-!$LIGHT_GREEN = "#69f438"
-!$MEDIUM_GREEN = "#33cc32"
-!$DARK_GREEN = "#090"
-
-!$LIGHT_BLUE = "#5fffd7"
-!$MEDIUM_BLUE = "#00bfa8"
-!$DARK_BLUE = "#008083"
 
 !$YELLOW = "#ffff00"
 !$GOLD = "#cb9901"
@@ -29,50 +24,60 @@
 !$LIGHT_RED = "#c33"
 !$DARK_RED = "#980101"
 
-!$LIGHT_GRAY = "#404040"
+!$GREEN = "#3bea1f"
+!$LIGHT_GREEN = "#69f438"
+!$MEDIUM_GREEN = "#33cc32"
+!$DARK_GREEN = "#030"
+
+!$LIGHT_BLUE = "#5fffd7"
+!$MEDIUM_BLUE = "#00bfa8"
+!$DARK_BLUE = "#008083"
+
+!$SLATEGRAY = "#708090"
 !$MEDIUM_GRAY = "#333"
-!$DARK_GRAY = "#313131"
-!$BLACK = "#000"
-
-
-
-
-
-
-
-
+!$DARK_BLUEGRAY = "#313f47"
 
 'definitions for color usages, do not use # values here for colors. define them above first
-!$BACKGROUND = $BLACK
-!$TEXT_HEADER = $BLACK
+!$MAIN_THEME = $GREEN
+!$BACKGROUND = $ALMOST_BLACK
+!$HEADER_TEXT = $GREEN
 !$TEXT = $OFF_WHITE
-!$ERROR = $LIGHT_RED
-!$HEADER_BACKGROUND = $DARK_GREEN
-!$OBJECT_BACKGROUND = $DARK_GRAY
-!$OBJECT_BORDER = $MEDIUM_GREEN
+!$HEADER_BACKGROUND = $DARK_BLUEGRAY
+!$OBJECT_BACKGROUND = $MEDIUM_GRAY
+!$OBJECT_BORDER = $SLATEGRAY
+!$START = $GREEN
+!$END = $RED
+!$ARROW_COLOR = $MAIN_THEME
 
-!procedure $success($msg)
-  <font color=$GREEN><b>$msg
-!endprocedure
+'Title
+!$TITLE_TEXT = $GREEN
 
-!procedure $failure($msg)
-  <font color=$RED><b>$msg
-!endprocedure
 
-!procedure $warning($msg)
-  <font color=$GOLD><b>$msg
-!endprocedure
+'Sequence
+!$LIFE_LINE_BACKGROUND = $MAIN_THEME
+!$LIFE_LINE_BORDER = $MEDIUM_BLUE
+!$GROUP_BORDER = $DARK_BLUE
+!$DIVIDER_TEXT = $MAIN_THEME
+!$REFERENCE_TEXT = $DARK_BLUEGRAY
+!$STEREOTYPE_TEXT = $GREEN
+
+
+'Note
+!$NOTE_TEXT = $MAIN_THEME
+!$NOTE_BORDER = $MAIN_THEME
+!$NOTE_BACKGROUND = $BLACK
+
 
 !procedure $primary_scheme()
-	FontColor $TEXT_HEADER
-	BorderColor $OBJECT_BORDER
-	BackgroundColor $OBJECT_BACKGROUND
+    FontColor $TEXT
+    BorderColor $OBJECT_BORDER
+    BackgroundColor $OBJECT_BACKGROUND
 !endprocedure
 
 !procedure $secondary_scheme()
-	FontColor $TEXT_HEADER
-	BorderColor $OBJECT_BORDER
-	BackgroundColor $WHITE-#fefefe
+    FontColor $HEADER_TEXT
+    BorderColor $OBJECT_BORDER
+    BackgroundColor $HEADER_BACKGROUND
 !endprocedure
 
 skinparam BackgroundColor       $BACKGROUND
@@ -85,63 +90,79 @@ skinparam roundcorner           6
 skinparam ParticipantPadding    30
 skinparam BoxPadding            40
 skinparam Padding               1
-skinparam PackageBackgroundColor $RED
+
 
 skinparam stereotype {
     'Class and Entity
     CBackgroundColor $GREEN
-    CBorderColor $MEDIUM_GRAY
-    
+    CBorderColor $ALMOST_BLACK
+
     'Abstract and Abstract Class
     ABackgroundColor $LIGHT_BLUE
-    ABorderColor $MEDIUM_GRAY
-    
+    ABorderColor $ALMOST_BLACK
+
     'Interface
-    IBackgroundColor $GOLD
-    IBorderColor $MEDIUM_GRAY
-    
+    IBackgroundColor $MAIN_THEME
+    IBorderColor $ALMOST_BLACK
+
     'Enum
-    EBackgroundColor $YELLOW
-    EBorderColor $MEDIUM_GRAY
-    
+    EBackgroundColor $GOLD
+    EBorderColor $ALMOST_BLACK
+
     'Annotation
-    NBackgroundColor $OFF_WHITE
-    NBorderColor $MEDIUM_GRAY
+    NBackgroundColor $YELLOW
+    NBorderColor $ALMOST_BLACK
 }
+
+
+!startsub title
 
 skinparam title {
-	BorderColor $BGCOLOR
-	BackgroundColor $BACKGROUND
-    FontColor $OFF_WHITE
+    $primary_scheme()
+    FontColor $TITLE_TEXT
 }
+
+!endsub
+
+!startsub legend
 
 skinparam legend {
-	BackgroundColor $OBJECT_BACKGROUND
-	BorderColor $OBJECT_BORDER
-	FontColor $TEXT
+    BackgroundColor $OBJECT_BACKGROUND
+    BorderColor $OBJECT_BORDER
+    FontColor $TEXT
 }
 
-!startsub swimlane
-skinparam swimlane {
-	BorderColor $OBJECT_BORDER
-	BorderThickness 2
-	TitleBackgroundColor  $HEADER_BACKGROUND
-	TitleFontColor $TEXT_HEADER
+!endsub
+
+
+!startsub person
+
+skinparam person {
+    $secondary_scheme()
 }
+
+!endsub
+
+!startsub swimlane
+
+skinparam swimlane {
+    $primary_scheme()
+}
+
 !endsub
 
 !startsub activity
 
 skinparam activity {
-	FontColor $TEXT
-	BorderColor $OBJECT_BORDER
-	BackgroundColor $OBJECT_BACKGROUND
-	BarColor $GREEN
-	StartColor $YELLOW
-	EndColor $RED
-	DiamondBackgroundColor $HEADER_BACKGROUND
-  	DiamondBorderColor $OBJECT_BORDER
-	DiamondFontColor $TEXT
+    FontColor $TEXT
+    BorderColor $OBJECT_BORDER
+    BackgroundColor $OBJECT_BACKGROUND
+    BarColor $HEADER_TEXT
+    StartColor $START
+    EndColor $END
+    DiamondBackgroundColor $HEADER_BACKGROUND
+    DiamondBorderColor $OBJECT_BORDER
+    DiamondFontColor $TEXT
 }
 
 !endsub
@@ -149,131 +170,113 @@ skinparam activity {
 !startsub participant
 
 skinparam participant {
-	$primary_scheme()
-	ParticipantBorderThickness 2
+    $primary_scheme()
+    ParticipantBorderThickness 2
 }
 !endsub
 
 !startsub actor
 
 skinparam actor {
-	$primary_scheme()
-	FontColor $PRIMARY
+    $primary_scheme()
 }
 !endsub
 
 !startsub arrow
 
 skinparam arrow {
-	Thickness 2
-	Color $DARK_BLUE
-	FontColor $TEXT
+    Thickness 1
+    Color $ARROW_COLOR
+    FontColor $TEXT
 }
 
 !endsub
 
 !startsub sequence
 
-skinparam sequence {    
-	BorderColor $OBJECT_BORDER
-	' For some reason sequence title font color does not pick up from global
-	TitleFontColor $TEXT_HEADER
-	BackgroundColor $OBJECT_BACKGROUND
-    HeaderBackgroundColor $OBJECT_BACKGROUND
-	StartColor $YELLOW
-	EndColor $RED
-	''
-	BoxBackgroundColor $BGCOLOR
-	BoxBorderColor $OBJECT_BORDER
-	BoxFontColor $TEXT
+skinparam sequence {
+	BoxBackgroundColor $HEADER_BACKGROUND
+	BoxBorderColor $HEADER_TEXT
+	BoxFontColor $HEADER_TEXT
 	''
 	DelayFontColor $TEXT
 	''
-	LifeLineBorderColor $DARK_GREEN
+	LifeLineBorderColor $LIFE_LINE_BORDER
 	LifeLineBorderThickness 2
-	LifeLineBackgroundColor $YELLOW
+	LifeLineBackgroundColor $LIFE_LINE_BACKGROUND
 	''
-	GroupBorderColor $DARK_BLUE
+	GroupBorderColor $GROUP_BORDER
 	GroupFontColor $TEXT
-	GroupHeaderFontColor $TEXT_HEADER
-	GroupBackgroundColor $MEDIUM_BLUE
+	GroupHeaderFontColor $HEADER_TEXT
+	GroupBackgroundColor $HEADER_BACKGROUND
 	GroupBodyBackgroundColor $OBJECT_BACKGROUND
 	GroupHeaderBackgroundColor $BACKGROUND
 	''
 	DividerBackgroundColor $OBJECT_BACKGROUND
     DividerBorderColor $OBJECT_BORDER
     DividerBorderThickness 2
-    DividerFontColor $GOLD
+    DividerFontColor $DIVIDER_TEXT
 	''
 	ReferenceBackgroundColor $OBJECT_BACKGROUND
 	ReferenceBorderColor $OBJECT_BORDER
-	ReferenceFontColor $DARK_BLUEGRAY
-	ReferenceHeaderFontColor $TEXT_HEADER
+	ReferenceFontColor $REFERENCE_TEXT
+	ReferenceHeaderFontColor $HEADER_TEXT
 	''
-	StereotypeFontColor $TEXT
-
+	StereotypeFontColor $STEREOTYPE_TEXT
+    ''
 	AttributeFontColor $TEXT
 	AttributeFontSize 50
 }
 !endsub
 
-
 !startsub partition
 
 skinparam partition {
-	BorderColor $PRIMARY
-	FontColor $PRIMARY
-	BackgroundColor $BGCOLOR
+    BackgroundColor $HEADER_BACKGROUND
 }
 !endsub
 
 !startsub collections
 
 skinparam collections {
-	$primary_scheme()
+    $primary_scheme()
 }
 !endsub
 
 !startsub control
 
 skinparam control {
-	$primary_scheme()
-	FontColor $PRIMARY
+    $primary_scheme()
 }
 !endsub
 
 !startsub entity
 
 skinparam entity {
-	$primary_scheme()
-	FontColor $PRIMARY
+    $primary_scheme()
 }
 !endsub
 
 !startsub boundary
 
 skinparam boundary {
-	$primary_scheme()
-	FontColor $PRIMARY
+    $primary_scheme()
 }
 !endsub
 
 !startsub agent
 
 skinparam agent {
-	BackgroundColor #orange
-	BorderColor #999999
-	FontColor #333333
+    $primary_scheme()
 }
 !endsub
 
 !startsub note
 
 skinparam note {
-	BorderThickness 1
-    BackgroundColor $GOLD
-	BorderColor $OBJECT_BORDER
-	FontColor $TEXT_HEADER
+    FontColor $NOTE_TEXT
+    BorderColor $NOTE_BORDER
+    BackgroundColor $NOTE_BACKGROUND
 }
 
 !endsub
@@ -281,62 +284,51 @@ skinparam note {
 !startsub artifact
 
 skinparam artifact {
-	BackgroundColor $PRIMARY-$PRIMARY_LIGHT
-	BorderColor $BORDER
-	FontColor $PRIMARY_TEXT
+    $primary_scheme()
 }
 !endsub
 
 !startsub component
 
 skinparam component {
-	$primary_scheme()
+    $primary_scheme()
 }
 !endsub
 
 !startsub interface
 
 skinparam interface {
-	BackgroundColor  $DANGER_LIGHT
-	BorderColor  $DANGER
-	FontColor $DARK
+    $primary_scheme()
 }
 !endsub
 
 !startsub storage
 
 skinparam storage {
-	BackgroundColor $WARNING_LIGHT-$WARNING
-  	BorderColor $WARNING
-	FontColor $WARNING_TEXT
+    $primary_scheme()
 }
 !endsub
 
 !startsub node
 
 skinparam node {
-	BackgroundColor $SECONDARY_LIGHT-$SECONDARY
-	BorderColor $SECONDARY_DARK
-	FontColor $PRIMARY
+    $primary_scheme()
 }
 !endsub
 
 !startsub cloud
 
 skinparam cloud {
-	BackgroundColor transparent
-	BorderColor #F2FCFE
-	FontColor $PRIMARY
+    $secondary_scheme()
+    BorderColor $MAIN_THEME
+    BackgroundColor $DARK_GREEN
 }
 !endsub
 
 !startsub database
 
 skinparam database {
-	$primary_scheme()
-	' FontColor $PRIMARY
-	BorderColor $PRIMARY_DARK
-	' BackgroundColor  $BGCOLOR
+    $primary_scheme()
 }
 !endsub
 
@@ -346,7 +338,7 @@ skinparam class{
     $primary_scheme()
 
     HeaderBackgroundColor $HEADER_BACKGROUND
-	StereotypeFontColor $PRIMARY_TEXT
+    StereotypeFontColor $TEXT
     FontSize 14
     BorderThickness 1
     AttributeFontColor $TEXT
@@ -358,41 +350,47 @@ skinparam class{
 !startsub object
 
 skinparam object {
-	$primary_scheme()
-	StereotypeFontColor $PRIMARY_TEXT
-	BorderThickness 1
-	AttributeFontColor $PRIMARY_TEXT
-	AttributeFontSize 11
+    $primary_scheme()
+    StereotypeFontColor $TEXT
+    BorderThickness 1
+    AttributeFontColor $TEXT
+    AttributeFontSize 11
 }
 !endsub
 
 !startsub usecase
 
 skinparam usecase {
-	$primary_scheme()
-	BorderThickness 2
-	StereotypeFontColor $PRIMARY_TEXT
+    $primary_scheme()
+    BorderThickness 1
+    StereotypeFontColor $TEXT
 }
+!endsub
+
+!startsub hexagon
+
+skinparam hexagon {
+    $primary_scheme()
+}
+
 !endsub
 
 !startsub rectangle
 
 skinparam rectangle {
-	$secondary_scheme()
-	BorderThickness 2
-	StereotypeFontColor $PRIMARY_TEXT
+    $primary_scheme()
+    BorderThickness 1
+    StereotypeFontColor $TEXT
 }
 !endsub
 
 !startsub package
 
+'The Activity diagram's partition uses package's BorderColor, FontColor, and Thickness, but not BackgroundColor
 skinparam package {
-	FontColor $TEXT_HEADER
-	BorderColor $OBJECT_BORDER
-	BackgroundColor $OBJECT_BACKGROUND
+    $secondary_scheme()
     StereotypeFontColor $TEXT
-    
-	BorderThickness 3
+    BorderThickness 2
 }
 
 !endsub
@@ -400,64 +398,52 @@ skinparam package {
 !startsub folder
 
 skinparam folder {
-	BackgroundColor $WHITE-$SECONDARY_LIGHT
-  	BorderColor $WARNING
-	FontColor $WARNING
-	BorderThickness 2
+    $secondary_scheme()
 }
 !endsub
 
 !startsub frame
 
 skinparam frame {
-	BackgroundColor $WHITE-$SECONDARY_LIGHT
-  	BorderColor $INFO
-	FontColor $INFO
-	BorderThickness 2
+    $secondary_scheme()
 }
 !endsub
 
 !startsub state
 
 skinparam state {
-	$primary_scheme()
-	BorderColor $PRIMARY_DARK
-	StartColor $INFO
-	EndColor $INFO
-	AttributeFontColor $PRIMARY_TEXT
-	AttributeFontSize 11
+    $primary_scheme()
+    StartColor $START
+    EndColor $END
+    AttributeFontColor $TEXT
+    AttributeFontSize 11
 }
 !endsub
 
 !startsub queue
 
 skinparam queue {
-	$primary_scheme()
+    $primary_scheme()
 }
 !endsub
 
 !startsub card
 
 skinparam card {
-	BackgroundColor $INFO_LIGHT-$INFO
-	BorderColor $INFO
-	FontColor $INFO_TEXT
+    $primary_scheme()
 }
 !endsub
 
 !startsub file
 
 skinparam file {
-	BackgroundColor $SECONDARY_LIGHT-$SECONDARY
-	BorderColor $INFO
-	FontColor $SECONDARY_TEXT
-
+    $primary_scheme()
 }
 !endsub
 
 !startsub stack
 
 skinparam stack {
-	$primary_scheme()
+    $primary_scheme()
 }
 !endsub
