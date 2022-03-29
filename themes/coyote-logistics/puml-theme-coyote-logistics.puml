@@ -10,7 +10,9 @@
 !endif
 
 
-'color definitions - do not use these directly
+'
+'color definitions - do not use these directly on diagram objects
+'
 !$BLACK = "#000"
 !$ALMOST_BLACK = "#101010"
 
@@ -26,7 +28,7 @@
 
 !$GREEN = "#3bea1f"
 !$LIGHT_GREEN = "#69f438"
-!$MEDIUM_GREEN = "#33cc32"
+!$MEDIUM_GREEN = "#050"
 !$DARK_GREEN = "#030"
 
 !$LIGHT_BLUE = "#5fffd7"
@@ -37,7 +39,11 @@
 !$MEDIUM_GRAY = "#333"
 !$DARK_BLUEGRAY = "#313f47"
 
-'definitions for color usages, do not use # values here for colors. define them above first
+'
+'definitions for color usage on diagram objects
+'do not use # values here because it reduces readability when building a theme
+'define them above first
+'
 !$MAIN_THEME = $GREEN
 !$BACKGROUND = $ALMOST_BLACK
 !$HEADER_TEXT = $GREEN
@@ -49,23 +55,26 @@
 !$END = $RED
 !$ARROW_COLOR = $MAIN_THEME
 
+'
+'Special handling for individual diagram objects
+'
 'Title
 !$TITLE_TEXT = $GREEN
 
-
 'Sequence
-!$LIFE_LINE_BACKGROUND = $MAIN_THEME
-!$LIFE_LINE_BORDER = $MEDIUM_BLUE
+!$LIFE_LINE_BACKGROUND = $GREEN
+!$LIFE_LINE_BORDER = $OBJECT_BORDER
 !$GROUP_BORDER = $DARK_BLUE
 !$DIVIDER_TEXT = $MAIN_THEME
 !$REFERENCE_TEXT = $DARK_BLUEGRAY
 !$STEREOTYPE_TEXT = $GREEN
 
-
 'Note
 !$NOTE_TEXT = $MAIN_THEME
 !$NOTE_BORDER = $MAIN_THEME
 !$NOTE_BACKGROUND = $BLACK
+
+
 
 
 !procedure $primary_scheme()
@@ -195,7 +204,7 @@ skinparam arrow {
 !startsub sequence
 
 skinparam sequence {
-	BoxBackgroundColor $HEADER_BACKGROUND
+	BoxBackgroundColor $OBJECT_BACKGROUND
 	BoxBorderColor $HEADER_TEXT
 	BoxFontColor $HEADER_TEXT
 	''
