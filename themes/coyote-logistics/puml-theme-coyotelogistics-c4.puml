@@ -1,0 +1,20 @@
+''
+'' Change the C4 theme to match the Coyote Logistics color scheme
+''
+'' Author: Joe Kolodz
+'' Copyright (c) 2022 by Joe kOlodz
+$UpdateElementStyle("node", $MAIN_THEME, $ALMOST_BLACK, $OBJECT_BORDER)
+
+$UpdateElementStyle("person", $MAIN_THEME, $ALMOST_BLACK, $OBJECT_BORDER)
+$UpdateElementStyle("system", $MAIN_THEME, $ALMOST_BLACK, $OBJECT_BORDER)
+$UpdateElementStyle("container", $MAIN_THEME, $ALMOST_BLACK, $OBJECT_BORDER)
+$UpdateElementStyle("component", $MAIN_THEME, $ALMOST_BLACK, $OBJECT_BORDER)
+
+$UpdateElementStyle("external_person", $MEDIUM_GRAY, $TEXT, $OBJECT_BORDER)
+$UpdateElementStyle("external_system", $MEDIUM_GRAY, $TEXT, $OBJECT_BORDER)
+$UpdateElementStyle("external_container", $MEDIUM_GRAY, $TEXT, $OBJECT_BORDER)
+$UpdateElementStyle("external_component", $MEDIUM_GRAY, $TEXT, $OBJECT_BORDER)
+
+$UpdateElementStyle("boundary", $OBJECT_BACKGROUND, $TEXT, $OBJECT_BORDER)
+
+skinparam ArrowThickness 2
